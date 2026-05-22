@@ -1,10 +1,34 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Geist_Mono,
+  Noto_Sans_SC,
+  Plus_Jakarta_Sans,
+  Quicksand,
+  ZCOOL_KuaiLe,
+} from "next/font/google";
+import { sourceHanRounded } from "@/lib/fonts";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const quicksand = Quicksand({
+  variable: "--font-quicksand",
   subsets: ["latin"],
+  weight: ["700"],
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
+  subsets: ["latin"],
+  weight: ["500"],
+});
+
+const zcoolKuaile = ZCOOL_KuaiLe({
+  variable: "--font-zcool-kuaile",
+  weight: "400",
+});
+
+const notoSansSC = Noto_Sans_SC({
+  variable: "--font-noto-sans-sc",
+  weight: ["400", "500", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -24,10 +48,12 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      lang="zh-CN"
+      className={`${quicksand.variable} ${plusJakarta.variable} ${zcoolKuaile.variable} ${notoSansSC.variable} ${sourceHanRounded.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-surface text-on-surface font-body">
+        {children}
+      </body>
     </html>
   );
 }

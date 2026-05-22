@@ -1,8 +1,11 @@
+import StylePreview from '@/components/StylePreview';
 import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <StylePreview />
+    </div>
   )
 }
 

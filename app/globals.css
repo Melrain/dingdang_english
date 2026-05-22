@@ -1,26 +1,209 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Surface */
+  --surface: #f9f9ff;
+  --surface-dim: #cfdaf1;
+  --surface-bright: #f9f9ff;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f0f3ff;
+  --surface-container: #e7eeff;
+  --surface-container-high: #dee8ff;
+  --surface-container-highest: #d8e3fa;
+  --surface-variant: #d8e3fa;
+  --surface-tint: #00658d;
+  --on-surface: #111c2c;
+  --on-surface-variant: #3d4850;
+  --inverse-surface: #263142;
+  --inverse-on-surface: #ebf1ff;
+  --outline: #6d7881;
+  --outline-variant: #bdc8d2;
+
+  /* Canvas aliases */
+  --background: var(--surface);
+  --foreground: var(--on-surface);
+  --on-background: #111c2c;
+
+  /* Brand */
+  --primary: #00658d;
+  --on-primary: #ffffff;
+  --primary-container: #00baff;
+  --on-primary-container: #004764;
+  --inverse-primary: #81cfff;
+  --primary-fixed: #c6e7ff;
+  --primary-fixed-dim: #81cfff;
+  --on-primary-fixed: #001e2d;
+  --on-primary-fixed-variant: #004c6b;
+
+  --secondary: #416900;
+  --on-secondary: #ffffff;
+  --secondary-container: #acf847;
+  --on-secondary-container: #457000;
+  --secondary-fixed: #acf847;
+  --secondary-fixed-dim: #91db2a;
+  --on-secondary-fixed: #102000;
+  --on-secondary-fixed-variant: #304f00;
+
+  --tertiary: #914c00;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #ff932d;
+  --on-tertiary-container: #673400;
+  --tertiary-fixed: #ffdcc4;
+  --tertiary-fixed-dim: #ffb77f;
+  --on-tertiary-fixed: #2f1500;
+  --on-tertiary-fixed-variant: #6f3900;
+
+  /* Error */
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+  --error-container: #ffdad6;
+  --on-error-container: #93000a;
+
+  /* Semantic aliases */
+  --success: var(--secondary-container);
+  --attention: var(--tertiary-container);
+  --magic: var(--primary-container);
 }
 
 @theme inline {
+  /* Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-on-background: var(--on-background);
+  --color-surface: var(--surface);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-variant: var(--surface-variant);
+  --color-surface-tint: var(--surface-tint);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-inverse-surface: var(--inverse-surface);
+  --color-inverse-on-surface: var(--inverse-on-surface);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-inverse-primary: var(--inverse-primary);
+  --color-primary-fixed: var(--primary-fixed);
+  --color-primary-fixed-dim: var(--primary-fixed-dim);
+  --color-on-primary-fixed: var(--on-primary-fixed);
+  --color-on-primary-fixed-variant: var(--on-primary-fixed-variant);
+
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+  --color-secondary-fixed: var(--secondary-fixed);
+  --color-secondary-fixed-dim: var(--secondary-fixed-dim);
+  --color-on-secondary-fixed: var(--on-secondary-fixed);
+  --color-on-secondary-fixed-variant: var(--on-secondary-fixed-variant);
+
+  --color-tertiary: var(--tertiary);
+  --color-on-tertiary: var(--on-tertiary);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+  --color-tertiary-fixed: var(--tertiary-fixed);
+  --color-tertiary-fixed-dim: var(--tertiary-fixed-dim);
+  --color-on-tertiary-fixed: var(--on-tertiary-fixed);
+  --color-on-tertiary-fixed-variant: var(--on-tertiary-fixed-variant);
+
+  --color-error: var(--error);
+  --color-on-error: var(--on-error);
+  --color-error-container: var(--error-container);
+  --color-on-error-container: var(--on-error-container);
+
+  --color-success: var(--success);
+  --color-attention: var(--attention);
+  --color-magic: var(--magic);
+
+  /* Typography — requires font variables on <html> */
+  --font-display: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Chinese — 站酷快乐体 (标题) / 思源柔黑·资源圆体 (正文圆润) / Noto (对照) */
+  --font-cn-display: var(--font-zcool-kuaile), "PingFang SC", "Microsoft YaHei UI",
+    sans-serif;
+  --font-cn-rounded: var(--font-source-han-rounded), "PingFang SC", "Microsoft YaHei UI",
+    sans-serif;
+  --font-cn-body: var(--font-noto-sans-sc), "PingFang SC", "Microsoft YaHei UI",
+    sans-serif;
+  --font-cn-system: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI",
+    sans-serif;
+  /* 中英混排推荐栈（正文优先资源圆体） */
+  --font-display-mixed: var(--font-quicksand), var(--font-zcool-kuaile), "PingFang SC",
+    sans-serif;
+  --font-body-mixed: var(--font-plus-jakarta), var(--font-source-han-rounded),
+    var(--font-noto-sans-sc), "PingFang SC", "Microsoft YaHei UI", sans-serif;
+  --font-body-rounded-mixed: var(--font-plus-jakarta), var(--font-source-han-rounded),
+    "PingFang SC", sans-serif;
+
+  --text-headline-xl: 2.5rem;
+  --text-headline-xl--line-height: 3rem;
+  --text-headline-xl--letter-spacing: -0.02em;
+  --text-headline-lg: 2rem;
+  --text-headline-lg--line-height: 2.5rem;
+  --text-headline-lg-mobile: 1.75rem;
+  --text-headline-lg-mobile--line-height: 2.125rem;
+  --text-body-lg: 1.25rem;
+  --text-body-lg--line-height: 1.875rem;
+  --text-body-md: 1.125rem;
+  --text-body-md--line-height: 1.75rem;
+  --text-label-lg: 1.125rem;
+  --text-label-lg--line-height: 1.5rem;
+  --text-label-md: 1rem;
+  --text-label-md--line-height: 1.25rem;
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-DEFAULT: 1rem;
+  --radius-md: 1.5rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --spacing-gutter: 1.5rem;
+  --spacing-margin-mobile: 1.25rem;
+  --spacing-margin-desktop: 4rem;
+  --spacing-stack-sm: 0.75rem;
+  --spacing-stack-md: 1.5rem;
+  --spacing-stack-lg: 3rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Gummy button depth — hue-matched offset shadows */
+@utility gummy-primary {
+  box-shadow: 0 6px 0 color-mix(in srgb, var(--primary) 80%, black);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility gummy-primary-active {
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--primary) 80%, black);
+  transform: translateY(4px);
+}
+
+@utility gummy-secondary {
+  box-shadow: 0 6px 0 color-mix(in srgb, var(--secondary) 80%, black);
+}
+
+@utility gummy-secondary-active {
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--secondary) 80%, black);
+  transform: translateY(4px);
+}
+
+@utility gummy-tertiary {
+  box-shadow: 0 6px 0 color-mix(in srgb, var(--tertiary) 80%, black);
+}
+
+@utility gummy-tertiary-active {
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--tertiary) 80%, black);
+  transform: translateY(4px);
 }

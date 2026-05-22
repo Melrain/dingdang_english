@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 思源柔黑 / 资源圆体（体积大，本地运行 npm run font:rounded 下载）
+/public/fonts/RHR-CN.7z
+/public/fonts/resource-han-rounded/
